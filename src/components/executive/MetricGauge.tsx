@@ -8,49 +8,48 @@ export default function MetricGauge() {
   const { healthIndex } = useCityPulse();
   const { score, status, vectorScores } = healthIndex;
 
-  // Gauge calculation for semi-circle SVG
   const radius = 64;
-  const circumference = Math.PI * radius; // Semi-circle circumference
+  const circumference = Math.PI * radius;
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
-  let strokeColor = '#10B981'; // emerald
-  let statusBadgeBg = 'bg-emerald-950 text-emerald-300 border-emerald-800';
+  let strokeColor = '#FFAA7A'; // Peach
+  let statusBadgeBg = 'bg-[#241712] text-[#FFAA7A] border-[#543C30]';
   let StatusIcon = ShieldCheck;
 
   if (score < 60) {
-    strokeColor = '#F43F5E'; // rose
-    statusBadgeBg = 'bg-rose-950 text-rose-300 border-rose-800';
+    strokeColor = '#E86A38'; // Terracotta
+    statusBadgeBg = 'bg-[#2E140D] text-[#FF8F66] border-[#703020]';
     StatusIcon = AlertCircle;
   } else if (score < 75) {
-    strokeColor = '#F59E0B'; // amber
-    statusBadgeBg = 'bg-amber-950 text-amber-300 border-amber-800';
+    strokeColor = '#D6B49F'; // Warm Tan
+    statusBadgeBg = 'bg-[#241A14] text-[#FFE0CC] border-[#4D362C]';
     StatusIcon = AlertTriangle;
   }
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col justify-between">
+    <div className="bg-[#140F0D] border border-[#2C201A] rounded-2xl p-5 shadow-brown flex flex-col justify-between">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Activity className="w-4 h-4 text-cyan-400" />
-          <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
+          <Activity className="w-4 h-4 text-[#FFAA7A]" />
+          <span className="text-xs font-serif font-bold uppercase tracking-wider text-[#D6B49F]">
             Civic Health Index
           </span>
         </div>
-        <div className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold border flex items-center gap-1 ${statusBadgeBg}`}>
+        <div className={`px-2.5 py-0.5 rounded text-[10px] font-mono font-bold border flex items-center gap-1.5 ${statusBadgeBg}`}>
           <StatusIcon className="w-3 h-3" />
           <span>{status.toUpperCase()}</span>
         </div>
       </div>
 
       {/* Main Semi-Circle Gauge */}
-      <div className="relative flex flex-col items-center justify-center my-2">
+      <div className="relative flex flex-col items-center justify-center my-3">
         <svg className="w-44 h-24 overflow-visible" viewBox="0 0 160 85">
           {/* Background Track */}
           <path
             d="M 16 80 A 64 64 0 0 1 144 80"
             fill="none"
-            stroke="#1E293B"
+            stroke="#261C17"
             strokeWidth="12"
             strokeLinecap="round"
           />
@@ -69,24 +68,26 @@ export default function MetricGauge() {
 
         {/* Center Score Readout */}
         <div className="absolute bottom-0 text-center">
-          <div className="text-3xl font-black tracking-tight text-white font-mono">
+          <div className="text-3xl font-black tracking-tight text-[#FFF5EE] font-serif">
             {score}
-            <span className="text-sm font-normal text-slate-400">/100</span>
+            <span className="text-sm font-normal text-[#B88E77]">/100</span>
           </div>
-          <div className="text-[10px] font-mono text-slate-400 tracking-wide">COMPOSITE RATING</div>
+          <div className="text-[10px] font-mono text-[#A67E68] tracking-widest uppercase">
+            COMPOSITE SCORE
+          </div>
         </div>
       </div>
 
       {/* 4 Vector Micro Bars */}
-      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800/80 text-xs font-mono">
+      <div className="grid grid-cols-2 gap-3 pt-3 border-t border-[#241A15] text-xs font-mono">
         <div>
           <div className="flex justify-between text-[11px] mb-1">
-            <span className="text-slate-400">🚗 Mobility</span>
-            <span className="text-white font-bold">{vectorScores.mobility}%</span>
+            <span className="text-[#B88E77]">🚗 Mobility</span>
+            <span className="text-[#FFF5EE] font-bold">{vectorScores.mobility}%</span>
           </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#241A15] h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-cyan-400 h-full rounded-full transition-all duration-500"
+              className="bg-[#FFAA7A] h-full rounded-full transition-all duration-500"
               style={{ width: `${vectorScores.mobility}%` }}
             />
           </div>
@@ -94,12 +95,12 @@ export default function MetricGauge() {
 
         <div>
           <div className="flex justify-between text-[11px] mb-1">
-            <span className="text-slate-400">🍃 Environment</span>
-            <span className="text-white font-bold">{vectorScores.environment}%</span>
+            <span className="text-[#B88E77]">🍃 Environment</span>
+            <span className="text-[#FFF5EE] font-bold">{vectorScores.environment}%</span>
           </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#241A15] h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-emerald-400 h-full rounded-full transition-all duration-500"
+              className="bg-[#FFD2B8] h-full rounded-full transition-all duration-500"
               style={{ width: `${vectorScores.environment}%` }}
             />
           </div>
@@ -107,12 +108,12 @@ export default function MetricGauge() {
 
         <div>
           <div className="flex justify-between text-[11px] mb-1">
-            <span className="text-slate-400">⚡ Infra</span>
-            <span className="text-white font-bold">{vectorScores.infrastructure}%</span>
+            <span className="text-[#B88E77]">⚡ Infra</span>
+            <span className="text-[#FFF5EE] font-bold">{vectorScores.infrastructure}%</span>
           </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#241A15] h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-violet-400 h-full rounded-full transition-all duration-500"
+              className="bg-[#D6B49F] h-full rounded-full transition-all duration-500"
               style={{ width: `${vectorScores.infrastructure}%` }}
             />
           </div>
@@ -120,12 +121,12 @@ export default function MetricGauge() {
 
         <div>
           <div className="flex justify-between text-[11px] mb-1">
-            <span className="text-slate-400">📢 Sentiment</span>
-            <span className="text-white font-bold">{vectorScores.sentiment}%</span>
+            <span className="text-[#B88E77]">📢 Sentiment</span>
+            <span className="text-[#FFF5EE] font-bold">{vectorScores.sentiment}%</span>
           </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#241A15] h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-amber-400 h-full rounded-full transition-all duration-500"
+              className="bg-[#E86A38] h-full rounded-full transition-all duration-500"
               style={{ width: `${vectorScores.sentiment}%` }}
             />
           </div>

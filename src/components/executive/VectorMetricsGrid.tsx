@@ -8,13 +8,8 @@ import {
   Wind,
   Zap,
   Smile,
-  ArrowUpRight,
-  ArrowDownRight,
-  Minus,
   Clock,
   Volume2,
-  Droplet,
-  MessageSquareWarning,
 } from 'lucide-react';
 
 function Sparkline({ data, color }: { data: MetricHistoryPoint[]; color: string }) {
@@ -60,52 +55,52 @@ export default function VectorMetricsGrid() {
       {/* 1. MOBILITY & TRAFFIC */}
       <div
         onClick={() => setSelectedVector(selectedVector === 'mobility' ? 'all' : 'mobility')}
-        className={`bg-slate-900/90 border rounded-2xl p-4 shadow-xl cursor-pointer transition-all hover:border-cyan-500/80 ${
+        className={`bg-[#140F0D] border rounded-2xl p-4 shadow-brown cursor-pointer transition-all hover:border-[#FFAA7A]/70 ${
           selectedVector === 'mobility'
-            ? 'border-cyan-500 ring-1 ring-cyan-500/40 bg-slate-900'
-            : 'border-slate-800'
+            ? 'border-[#FFAA7A] ring-1 ring-[#FFAA7A]/40'
+            : 'border-[#2C201A]'
         }`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-[#261A14] text-[#FFAA7A] border border-[#443026]">
               <Car className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+              <h4 className="text-xs font-serif font-bold uppercase tracking-wider text-[#D6B49F]">
                 Mobility & Traffic
               </h4>
-              <span className="text-[10px] text-cyan-400 font-mono">Arterial Telemetry</span>
+              <span className="text-[10px] text-[#FFAA7A] font-mono">Arterial Flow</span>
             </div>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-            {mobility.activeBottlenecks} Bottlenecks
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#201612] text-[#B88E77] border border-[#33251E]">
+            {mobility.activeBottlenecks} Nodes
           </span>
         </div>
 
-        <div className="mt-3 flex items-baseline justify-between">
+        <div className="mt-3.5 flex items-baseline justify-between">
           <div>
-            <div className="text-2xl font-black font-mono text-white tracking-tight">
+            <div className="text-2xl font-black font-serif text-[#FFF5EE] tracking-tight">
               {mobility.congestionIndex}%
             </div>
-            <div className="text-[11px] text-slate-400 font-mono">Congestion Index</div>
+            <div className="text-[11px] text-[#A67E68] font-mono">Congestion Index</div>
           </div>
           <div className="w-28">
-            <Sparkline data={mobility.history} color="#38BDF8" />
+            <Sparkline data={mobility.history} color="#FFAA7A" />
           </div>
         </div>
 
-        <div className="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-xs font-mono">
+        <div className="mt-3 pt-3 border-t border-[#241A15] grid grid-cols-2 gap-2 text-xs font-mono">
           <div>
-            <span className="text-slate-400 text-[11px] block">Avg Transit Delay</span>
-            <span className="text-white font-semibold flex items-center gap-1">
-              <Clock className="w-3 h-3 text-cyan-400" />
+            <span className="text-[#A67E68] text-[11px] block">Transit Delay</span>
+            <span className="text-[#FFF5EE] font-semibold flex items-center gap-1">
+              <Clock className="w-3 h-3 text-[#FFAA7A]" />
               +{mobility.avgTransitDelayMins.toFixed(1)} mins
             </span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">On-Time Rate</span>
-            <span className="text-emerald-400 font-semibold">{mobility.transitOnTimeRate}%</span>
+            <span className="text-[#A67E68] text-[11px] block">On-Time Rate</span>
+            <span className="text-[#FFAA7A] font-semibold">{mobility.transitOnTimeRate}%</span>
           </div>
         </div>
       </div>
@@ -113,59 +108,59 @@ export default function VectorMetricsGrid() {
       {/* 2. ENVIRONMENT & AIR QUALITY */}
       <div
         onClick={() => setSelectedVector(selectedVector === 'environment' ? 'all' : 'environment')}
-        className={`bg-slate-900/90 border rounded-2xl p-4 shadow-xl cursor-pointer transition-all hover:border-emerald-500/80 ${
+        className={`bg-[#140F0D] border rounded-2xl p-4 shadow-brown cursor-pointer transition-all hover:border-[#FFAA7A]/70 ${
           selectedVector === 'environment'
-            ? 'border-emerald-500 ring-1 ring-emerald-500/40 bg-slate-900'
-            : 'border-slate-800'
+            ? 'border-[#FFAA7A] ring-1 ring-[#FFAA7A]/40'
+            : 'border-[#2C201A]'
         }`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-[#261A14] text-[#FFD2B8] border border-[#443026]">
               <Wind className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
-                Environment & Air
+              <h4 className="text-xs font-serif font-bold uppercase tracking-wider text-[#D6B49F]">
+                Environment
               </h4>
-              <span className="text-[10px] text-emerald-400 font-mono">Sensor Cluster</span>
+              <span className="text-[10px] text-[#FFD2B8] font-mono">Sensors Mesh</span>
             </div>
           </div>
           <span
-            className={`text-[10px] font-mono px-2 py-0.5 rounded ${
+            className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
               environment.aqi <= 50
-                ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
-                : 'bg-amber-950 text-amber-300 border border-amber-800'
+                ? 'bg-[#221813] text-[#FFAA7A] border-[#443026]'
+                : 'bg-[#2A150F] text-[#FF8F66] border-[#703020]'
             }`}
           >
             {environment.aqiCategory}
           </span>
         </div>
 
-        <div className="mt-3 flex items-baseline justify-between">
+        <div className="mt-3.5 flex items-baseline justify-between">
           <div>
-            <div className="text-2xl font-black font-mono text-white tracking-tight">
+            <div className="text-2xl font-black font-serif text-[#FFF5EE] tracking-tight">
               {Math.round(environment.aqi)}
-              <span className="text-xs font-normal text-slate-400 ml-1">AQI</span>
+              <span className="text-xs font-normal text-[#A67E68] ml-1">AQI</span>
             </div>
-            <div className="text-[11px] text-slate-400 font-mono">PM2.5: {environment.pm25} µg/m³</div>
+            <div className="text-[11px] text-[#A67E68] font-mono">PM2.5: {environment.pm25} µg/m³</div>
           </div>
           <div className="w-28">
-            <Sparkline data={environment.history} color="#10B981" />
+            <Sparkline data={environment.history} color="#FFD2B8" />
           </div>
         </div>
 
-        <div className="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-xs font-mono">
+        <div className="mt-3 pt-3 border-t border-[#241A15] grid grid-cols-2 gap-2 text-xs font-mono">
           <div>
-            <span className="text-slate-400 text-[11px] block">Ambient Sound</span>
-            <span className="text-white font-semibold flex items-center gap-1">
-              <Volume2 className="w-3 h-3 text-emerald-400" />
+            <span className="text-[#A67E68] text-[11px] block">Ambient Sound</span>
+            <span className="text-[#FFF5EE] font-semibold flex items-center gap-1">
+              <Volume2 className="w-3 h-3 text-[#FFD2B8]" />
               {environment.noiseDb.toFixed(1)} dB
             </span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">Atmospheric</span>
-            <span className="text-white font-semibold">
+            <span className="text-[#A67E68] text-[11px] block">Atmosphere</span>
+            <span className="text-[#FFF5EE] font-semibold">
               {environment.temperatureC}°C • {environment.humidityPercent}% RH
             </span>
           </div>
@@ -175,106 +170,106 @@ export default function VectorMetricsGrid() {
       {/* 3. PUBLIC INFRASTRUCTURE & SAFETY */}
       <div
         onClick={() => setSelectedVector(selectedVector === 'infrastructure' ? 'all' : 'infrastructure')}
-        className={`bg-slate-900/90 border rounded-2xl p-4 shadow-xl cursor-pointer transition-all hover:border-violet-500/80 ${
+        className={`bg-[#140F0D] border rounded-2xl p-4 shadow-brown cursor-pointer transition-all hover:border-[#FFAA7A]/70 ${
           selectedVector === 'infrastructure'
-            ? 'border-violet-500 ring-1 ring-violet-500/40 bg-slate-900'
-            : 'border-slate-800'
+            ? 'border-[#FFAA7A] ring-1 ring-[#FFAA7A]/40'
+            : 'border-[#2C201A]'
         }`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-[#261A14] text-[#D6B49F] border border-[#443026]">
               <Zap className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+              <h4 className="text-xs font-serif font-bold uppercase tracking-wider text-[#D6B49F]">
                 Infrastructure
               </h4>
-              <span className="text-[10px] text-violet-400 font-mono">Grid & Utilities</span>
+              <span className="text-[10px] text-[#D6B49F] font-mono">Grid & Outages</span>
             </div>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#201612] text-[#B88E77] border border-[#33251E]">
             {infrastructure.gridStabilityPercent}% Grid
           </span>
         </div>
 
-        <div className="mt-3 flex items-baseline justify-between">
+        <div className="mt-3.5 flex items-baseline justify-between">
           <div>
-            <div className="text-2xl font-black font-mono text-white tracking-tight">
+            <div className="text-2xl font-black font-serif text-[#FFF5EE] tracking-tight">
               {infrastructure.waterOutageCount + infrastructure.powerOutageCount}
-              <span className="text-xs font-normal text-slate-400 ml-1">Outages</span>
+              <span className="text-xs font-normal text-[#A67E68] ml-1">Outages</span>
             </div>
-            <div className="text-[11px] text-slate-400 font-mono">
+            <div className="text-[11px] text-[#A67E68] font-mono">
               {infrastructure.waterOutageCount} Water • {infrastructure.powerOutageCount} Power
             </div>
           </div>
           <div className="w-28">
-            <Sparkline data={infrastructure.history} color="#8B5CF6" />
+            <Sparkline data={infrastructure.history} color="#D6B49F" />
           </div>
         </div>
 
-        <div className="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-xs font-mono">
+        <div className="mt-3 pt-3 border-t border-[#241A15] grid grid-cols-2 gap-2 text-xs font-mono">
           <div>
-            <span className="text-slate-400 text-[11px] block">Emergency Response</span>
-            <span className="text-emerald-400 font-semibold">
+            <span className="text-[#A67E68] text-[11px] block">Emergency Response</span>
+            <span className="text-[#FFAA7A] font-semibold">
               {infrastructure.avgEmergencyResponseMins.toFixed(1)} mins
             </span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">Hospital Capacity</span>
-            <span className="text-white font-semibold">{infrastructure.hospitalBedCapacityPercent}%</span>
+            <span className="text-[#A67E68] text-[11px] block">Hospital Capacity</span>
+            <span className="text-[#FFF5EE] font-semibold">{infrastructure.hospitalBedCapacityPercent}%</span>
           </div>
         </div>
       </div>
 
-      {/* 4. CIVIC SENTIMENT & CITIZEN LOGS */}
+      {/* 4. CIVIC SENTIMENT */}
       <div
         onClick={() => setSelectedVector(selectedVector === 'sentiment' ? 'all' : 'sentiment')}
-        className={`bg-slate-900/90 border rounded-2xl p-4 shadow-xl cursor-pointer transition-all hover:border-amber-500/80 ${
+        className={`bg-[#140F0D] border rounded-2xl p-4 shadow-brown cursor-pointer transition-all hover:border-[#FFAA7A]/70 ${
           selectedVector === 'sentiment'
-            ? 'border-amber-500 ring-1 ring-amber-500/40 bg-slate-900'
-            : 'border-slate-800'
+            ? 'border-[#FFAA7A] ring-1 ring-[#FFAA7A]/40'
+            : 'border-[#2C201A]'
         }`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-[#261A14] text-[#E86A38] border border-[#443026]">
               <Smile className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+              <h4 className="text-xs font-serif font-bold uppercase tracking-wider text-[#D6B49F]">
                 Civic Sentiment
               </h4>
-              <span className="text-[10px] text-amber-400 font-mono">311 NLP Ingestion</span>
+              <span className="text-[10px] text-[#E86A38] font-mono">311 Ingestion</span>
             </div>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#201612] text-[#B88E77] border border-[#33251E]">
             {sentiment.dailyReportVolume} Logs/24h
           </span>
         </div>
 
-        <div className="mt-3 flex items-baseline justify-between">
+        <div className="mt-3.5 flex items-baseline justify-between">
           <div>
-            <div className="text-2xl font-black font-mono text-white tracking-tight">
+            <div className="text-2xl font-black font-serif text-[#FFF5EE] tracking-tight">
               {sentiment.overallScore}
-              <span className="text-xs font-normal text-slate-400 ml-1">/100</span>
+              <span className="text-xs font-normal text-[#A67E68] ml-1">/100</span>
             </div>
-            <div className="text-[11px] text-slate-400 font-mono">{sentiment.sentimentLabel}</div>
+            <div className="text-[11px] text-[#A67E68] font-mono">{sentiment.sentimentLabel}</div>
           </div>
           <div className="w-28">
-            <Sparkline data={sentiment.history} color="#F59E0B" />
+            <Sparkline data={sentiment.history} color="#E86A38" />
           </div>
         </div>
 
-        <div className="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-xs font-mono">
+        <div className="mt-3 pt-3 border-t border-[#241A15] grid grid-cols-2 gap-2 text-xs font-mono">
           <div>
-            <span className="text-slate-400 text-[11px] block">Citizen Polarity</span>
-            <span className="text-emerald-400 font-semibold">{sentiment.positiveRatio}% Pos</span>
-            <span className="text-rose-400 font-semibold ml-1">/{sentiment.negativeRatio}% Neg</span>
+            <span className="text-[#A67E68] text-[11px] block">Polarity</span>
+            <span className="text-[#FFAA7A] font-semibold">{sentiment.positiveRatio}% Pos</span>
+            <span className="text-[#E86A38] font-semibold ml-1">/{sentiment.negativeRatio}% Neg</span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">Top Hotspot</span>
-            <span className="text-slate-200 font-medium truncate block" title={sentiment.topConcern}>
+            <span className="text-[#A67E68] text-[11px] block">Top Hotspot</span>
+            <span className="text-[#FFF5EE] font-medium truncate block" title={sentiment.topConcern}>
               {sentiment.topConcern}
             </span>
           </div>
